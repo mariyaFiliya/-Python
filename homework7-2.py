@@ -1,36 +1,38 @@
-class Cell:
-    def __init__(self, cell):
-        self.cell = cell
+from abc import ABC, abstractmethod
 
-    def make_order(self, raw):
-        return '\n'.join(["○" * raw for _ in range(self.cell // raw)]) + '\n' + "○" * (self.cell % raw)
 
-    def __str__(self):
-        return f'{self.cell}'
+классная Одежда:
+    результат = 0
+
+    def __init__(self, param):
+        self.param = парам 
+
+    @property
+    @abstractmethod
+    def cloth(self):
+        проходить
 
     def __add__(self, other):
-        print('сумма клеток равна: ')
-        return Cell(self.cell + other.cell)
+        Clothes.result += self.cloth + other.cloth
+        возвратный костюм(0)
 
-    def __sub__(self, other):
-        print('разница клеток равна: ')
-        return Cell(
-            self.cell - other.cell) if self.cell - other.cell > 0 else 'вычитание невозможно, получается отрицательное значение'
+    def __str__(self):
+        res = Одежда.
+        Одежда.результат = 0
+        return f"{res}"
 
-    def __mul__(self, other):
-        print('умножение клеток равно: ')
-        return Cell(self.cell * other.cell)
-    def __truediv__(self, other):
-        print('деление кллеток равно: ')
-        return Cell(
-            self.cell / other.cell) if self.cell % other.cell == 0 else 'деление невозможно, возможно только целочисленное деление'
+классный костюм(Одежда):
+    @property
+    def cloth(self):
+        обратный раунд((2 * self.param + 0.3) / 100)
 
 
-cell_1 = Cell(15)
-cell_2 = Cell(5)
-print(cell_1.make_order(5))
-print(cell_2.make_order(3))
-print(cell_1 + cell_2)
-print(cell_1 / cell_2)
-print(cell_1 * cell_2)
-print(cell_1 - cell_2)
+классное пальто(Одежда):
+    @property
+    def cloth(self):
+        обратный раунд(self.param / 6.5) + 0.5
+
+
+пальто = Пальто(44)
+масть = Масть(125)
+принт(пальто + костюм)
