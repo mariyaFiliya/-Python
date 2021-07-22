@@ -1,38 +1,36 @@
-from abc import ABC, abstractmethod
+class Cell:
+    def __init__(self, cell):
+        self.cell = cell
 
-
-class Clothes:
-    result = 0
-
-    def __init__(self, param):
-        self.param = param
-
-    @property
-    @abstractmethod
-    def cloth(self):
-        pass
-
-    def __add__(self, other):
-        Clothes.result += self.cloth + other.cloth
-        return Suit(0)
+    def make_order(self, raw):
+        return '\n'.join(["○" * raw for _ in range(self.cell // raw)]) + '\n' + "○" * (self.cell % raw)
 
     def __str__(self):
-        res = Clothes.result
-        Clothes.result = 0
-        return f"{res}"
+        return f'{self.cell}'
 
-class Suit(Clothes):
-    @property
-    def cloth(self):
-        return round((2 * self.param + 0.3) / 100)
+    def __add__(self, other):
+        print('сумма клеток равна: ')
+        return Cell(self.cell + other.cell)
+
+    def __sub__(self, other):
+        print('разница клеток равна: ')
+        return Cell(
+            self.cell - other.cell) if self.cell - other.cell > 0 else 'вычитание невозможно, получается отрицательное значение'
+
+    def __mul__(self, other):
+        print('умножение клеток равно: ')
+        return Cell(self.cell * other.cell)
+    def __truediv__(self, other):
+        print('деление кллеток равно: ')
+        return Cell(
+            self.cell / other.cell) if self.cell % other.cell == 0 else 'деление невозможно, возможно только целочисленное деление'
 
 
-class Coat(Clothes):
-    @property
-    def cloth(self):
-        return round(self.param / 6.5) + 0.5
-
-
-coat = Coat(44)
-suit = Suit(125)
-print(coat + suit)
+cell_1 = Cell(15)
+cell_2 = Cell(5)
+print(cell_1.make_order(5))
+print(cell_2.make_order(3))
+print(cell_1 + cell_2)
+print(cell_1 / cell_2)
+print(cell_1 * cell_2)
+print(cell_1 - cell_2)
