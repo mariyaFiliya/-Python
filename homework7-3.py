@@ -17,9 +17,20 @@ class Cell:
         return Cell(
             self.cell - other.cell) if self.cell - other.cell > 0 else 'вычитание невозможно, получается отрицательное значение'
 
+    def __mul__(self, other):
+        print('умножение клеток равно: ')
+        return Cell(self.cell * other.cell)
+    def __truediv__(self, other):
+        print('деление кллеток равно: ')
+        return Cell(
+            self.cell / other.cell) if self.cell % other.cell == 0 else 'деление невозможно, возможно только целочисленное деление'
 
 
 cell_1 = Cell(15)
-cell_2 = Cell(4)
-print(cell_1 + cell_2)
+cell_2 = Cell(5)
 print(cell_1.make_order(5))
+print(cell_2.make_order(3))
+print(cell_1 + cell_2)
+print(cell_1 / cell_2)
+print(cell_1 * cell_2)
+print(cell_1 - cell_2)
